@@ -16,8 +16,8 @@
 # taxon_obs_loc="data/inat_obs_raw/usa_butterflies_inat_gbif.csv"
 # baseline_obs_loc="data/inat_obs_raw/usa_insects_inat_gbif.csv"
 
-createSSCsFromRawData <- function(taxon_obs, baseline_obs, daymet_downloaded,
-                                  season_intervals_per_year=8,rm_bfs_from_bl=TRUE,
+createSSCsFromRawData <- function(taxon_obs, baseline_obs, daymet_data,
+                                  season_intervals_per_year=4,rm_bfs_from_bl=FALSE,
                                   ssc_cellsize_km=250, ssc_n_obs_threshold=30,
                                   start_hr_trim =1,end_hr_trim=1,
                                   diff_metric_nbins=8,
@@ -34,8 +34,8 @@ createSSCsFromRawData <- function(taxon_obs, baseline_obs, daymet_downloaded,
     # prepare Daymet data by adding seasons and formatting correctly
     # OPTION - whether to split season by 4 or 8
 
-    print("Prepping Daymet data with prepDaymetData()")
-    daymet_data <- prepDaymetData(daymet_downloaded, season_intervals_per_year=season_intervals_per_year)
+    #print("Prepping Daymet data with prepDaymetData()")
+    #daymet_data <- prepDaymetData(daymet_downloaded, season_intervals_per_year=season_intervals_per_year)
     #saveRDS(daymet_data,file="data/saved_rds/dfs/daymet.rds")
 
     # OPTION - whether or not to filter out butterflies, to not filter out bflies, or to use all organisms

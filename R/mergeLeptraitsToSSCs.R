@@ -4,7 +4,7 @@ mergeLeptraitsToSSCs <- function(sscs){
     library(dplyr)
     leptraits <- read.csv("D:/GitProjects/inat-insect-foraging/data/misc/leptraits_consensus.csv")
     leptraits$species <- leptraits$Species
-    table(leptraits$CanopyAffinity)
+
     leptraits$CanopyAffinity[#leptraits$CanopyAffinity == "Mixed canopy (closed affinity)" |
         #leptraits$CanopyAffinity == "Mixed canopy" |
         #leptraits$CanopyAffinity == "Canopy generalist" |
@@ -21,6 +21,6 @@ mergeLeptraitsToSSCs <- function(sscs){
     leptraits <- dplyr::select(leptraits, wingspan,open_closed,species)
     library(stringr)
     sscs$species <- paste(str_split_fixed(sscs$species," ",n=3)[,1],str_split_fixed(sscs$species," ",n=3)[,2])
-    sscs <- merge(sscs,leptraits,by="species")
+    sscs <- merge(sscs,leptraits,by="species",all.x=TRUE)
     return(sscs)
 }
